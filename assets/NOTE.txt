@@ -1,0 +1,1 @@
+Configure the Python script with the necessary details, such as the `playersDB.json` file provided from your txAdmin instance and your `whitelist.json` file provided from the `VehicleTrustSystem` script. Place these files within the `/assets/` directory.
