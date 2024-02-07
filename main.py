@@ -53,7 +53,7 @@ with open(players_db_file, 'r', encoding="utf-8") as db:
                                         else:
                                             # Already has vehicle tracked... Update with owner UID
                                             file.write(
-                                                '\nUPDATE `vehicles` SET `owned_by_uid` = ' + str(userTracker[discordId]) + ' WHERE `vid` = ' + str(vehId) + ';')
+                                                '\nUPDATE `vehicles` SET `owned_by_uid` = ' + str(userTracker[discordId]) + ' WHERE `vid` = ' + str(vehIdTracker[spawncode]) + ';')
                                     else:
                                         # Not an owner, we need to insert the vehicle with no owner
                                         if not spawncode in vehIdTracker:
@@ -62,7 +62,7 @@ with open(players_db_file, 'r', encoding="utf-8") as db:
                                                 + str(vehId) + ', "' + spawncode + '", null);')
                                             vehIdTracker[spawncode] = vehId
                                         # We need to add trust for this vehicle...
-                                        file.write('\nINSERT INTO `trusts` (`vid`, `uid`) VALUES (' + str(vehId) + ', '
+                                        file.write('\nINSERT INTO `trusts` (`vid`, `uid`) VALUES (' + str(vehIdTracker[spawncode]) + ', '
                                                    + str(userTracker[discordId]) + ');')
 
                                 vehId = vehId + 1
